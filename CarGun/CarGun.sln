@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{ABA839AD-500F-D04D-C92A-248053300630}") = "CarGun", "Assembly-CSharp-firstpass.csproj", "{C83BC9F3-0308-06E6-FFF1-416F33CA02B0}"
+EndProject
+Project("{ABA839AD-500F-D04D-C92A-248053300630}") = "CarGun", "Assembly-CSharp.csproj", "{0937B8F5-8AC0-F995-08C8-6B899437BD26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C83BC9F3-0308-06E6-FFF1-416F33CA02B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83BC9F3-0308-06E6-FFF1-416F33CA02B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83BC9F3-0308-06E6-FFF1-416F33CA02B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83BC9F3-0308-06E6-FFF1-416F33CA02B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0937B8F5-8AC0-F995-08C8-6B899437BD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0937B8F5-8AC0-F995-08C8-6B899437BD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0937B8F5-8AC0-F995-08C8-6B899437BD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0937B8F5-8AC0-F995-08C8-6B899437BD26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
