@@ -3,25 +3,33 @@ using System.Collections;
 
 public class PlayerTurretControl : MonoBehaviour {
 
-	bool canFire = true;
-	bool reloading = false;
-
 	public float turnSpeed = 25;
 	public GameObject bulletPrefab;
 	public float TwinBarrelDelay = 0.5f;
+	public float elapsedTime;
 
 	private float yOffset; //value taken from crosshair position
 
+	private PlayerEntity player;
+
+
 	private GameObject Turret;
+
+	public float TwinBarrelBulletDamage;
+	public float TwinBarrelReload;
 	private GameObject TwinBarrel;
 	private int BarrelNum = 1;
 	private GameObject TwinBarrelS1;
 	private GameObject TwinBarrelS2;
+	private Vector3 barrelPos;
+	private Quaternion barrelRot;
 
 	private AudioManager audioManager;
 
 	// Use this for initialization
 	void Start () {
+		player = transform.GetComponent<PlayerEntity> ();
+
 		audioManager = GameObject.Find ("GameManager").GetComponent<AudioManager> ();
 		yOffset = transform.GetComponent<Crosshair> ().yOffset;
 		Turret = transform.FindChild ("CarTurret").transform.FindChild("Turret").gameObject;
@@ -39,6 +47,7 @@ public class PlayerTurretControl : MonoBehaviour {
 		if (Input.GetMouseButton (0)) {
 			Firing ();
 		}
+		elapsedTime += Time.deltaTime;
 	}
 
 	void RotateToCrosshair(){
@@ -54,37 +63,32 @@ public class PlayerTurretControl : MonoBehaviour {
 	}
 
 	void Firing(){
-		if ((canFire == false) && (reloading == false)) {
-			StartCoroutine (timer());
-		}
-		if ((canFire == true) && (reloading == false)) {
+		if (elapsedTime > TwinBarrelDelay && player.hasAmmo ()) {
 			switch (BarrelNum) {
 			case(1):
-				Instantiate (bulletPrefab, TwinBarrelS1.transform.position, TwinBarrelS1.transform.rotation);
-				canFire = false;
+				barrelPos = TwinBarrelS1.transform.position;
+				barrelRot = TwinBarrelS1.transform.rotation;
 				BarrelNum++;
 				break;
 			case(2):
-				Instantiate (bulletPrefab, TwinBarrelS2.transform.position, TwinBarrelS2.transform.rotation);
-				canFire = false;
+				barrelPos = TwinBarrelS2.transform.position;
+				barrelRot = TwinBarrelS2.transform.rotation;
 				BarrelNum++;
 				break;
-
 			default:
 				break;
 
 			}
-			audioManager.PlaySE_BarrelFire ();
-			if (BarrelNum >2)
+			if (BarrelNum > 2)
 				BarrelNum = 1;
+			GameObject bullet = Instantiate (bulletPrefab, barrelPos, barrelRot) as GameObject;
+			bullet.GetComponent<PlayerProjectile> ().wpnDmg = TwinBarrelBulletDamage;
+			player.useAmmo (1);
+			audioManager.PlaySE_BarrelFire ();
+			elapsedTime = 0;
+		} else if (!player.hasAmmo ()) {
+			if (elapsedTime > TwinBarrelReload)
+				player.restoreAmmo ();
 		}
-
-	}
-
-	IEnumerator timer(){
-		reloading = true;
-		yield return new WaitForSeconds (TwinBarrelDelay);
-		canFire = true;
-		reloading = false;
 	}
 }

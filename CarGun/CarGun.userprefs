@@ -1,8 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\ButtonsScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Car\PlayerTurretControl.cs">
     <Files>
-      <File FileName="Assets\Scripts\UI\ButtonsScript.cs" Line="22" Column="38" />
+      <File FileName="Assets\Scripts\Car\PlayerTurretControl.cs" Line="50" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

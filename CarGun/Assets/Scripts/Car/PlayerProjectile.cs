@@ -17,4 +17,16 @@ public class PlayerProjectile : MonoBehaviour {
 		rb.velocity = transform.forward * speed;
 		//transform.Translate(speed* Time.deltaTime * Vector3.forward);
 	}
+
+	void OnTriggerEnter(Collider col){
+		if (col.gameObject.tag == "Turret") {
+			col.gameObject.GetComponent<TurretClass> ().takeDamage (wpnDmg);
+			Destroy (gameObject);
+		}
+	}
+
+	void OnCollisionEnter(Collision col){
+		if (col.gameObject.tag == "Terrain")
+			Destroy (gameObject);
+	}
 }

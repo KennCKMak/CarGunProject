@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour {
 	[SerializeField] private AudioClip BGM_Boss;
 
 	[SerializeField] private AudioClip SE_BarrelFire;
+	[SerializeField] private AudioClip SE_MineExplode;
 
 	//private AudioSource source; //SE
 	private AudioSource bgm; //BGM
@@ -39,6 +40,11 @@ public class AudioManager : MonoBehaviour {
 	public void PlaySE_BarrelFire(){
 		PlaySound (SE_BarrelFire, 0.1f);
 	}
+
+	public void PlaySE_MineExplode(){
+		PlaySound (SE_MineExplode, 0.1f);
+	}
+
 
 	void Awake() //see if one existed before
 	{
@@ -63,6 +69,9 @@ public class AudioManager : MonoBehaviour {
 
 		if (SceneManager.GetActiveScene().name == "Main")
 			PlayBGM (BGM_Western);
+
+		if (SceneManager.GetActiveScene ().name == "TestingChamber")
+			PlayBGM (BGM_Menu);
 	}
 
 	void FixedUpdate(){
