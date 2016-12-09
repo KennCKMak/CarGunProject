@@ -20,6 +20,7 @@ public class PlayerProjectile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if (col.gameObject.tag == "Turret") {
+			GameObject.Find ("GameManager").GetComponent<AudioManager> ().PlaySE_CarHitMarker ();
 			col.gameObject.GetComponent<TurretClass> ().takeDamage (wpnDmg);
 			Destroy (gameObject);
 		}

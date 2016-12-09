@@ -9,6 +9,7 @@ public class TurretClass : MonoBehaviour {
 	public GameObject destroyedPrefab;
 	private TurretAttack turretAttack;
 	private GameManager gameManager;
+	private AudioManager audioManager;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,7 @@ public class TurretClass : MonoBehaviour {
 		setTurretEnable (isEnabled);
 		restoreHP ();
 
+		audioManager = GameObject.Find ("GameManager").GetComponent<AudioManager> ();
 		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 	}
 	
@@ -28,6 +30,7 @@ public class TurretClass : MonoBehaviour {
 		if (!isAlive()) {
 			GameObject newPrefab = Instantiate (destroyedPrefab, transform.position, transform.rotation) as GameObject;
 			newPrefab.GetComponent<DestroyedTurretClass> ().destroySelf (5f);
+			audioManager.PlaySE_TurretDestroyed ();
 			gameManager.TurretDied ();
 			Destroy (gameObject);
 		}

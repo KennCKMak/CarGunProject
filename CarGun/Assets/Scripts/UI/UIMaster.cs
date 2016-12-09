@@ -13,6 +13,9 @@ public class UIMaster : MonoBehaviour {
 
 	protected Text ammoText;
 
+	[SerializeField] private float min;
+	[SerializeField] private float sec;
+	protected Text timerText;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +25,7 @@ public class UIMaster : MonoBehaviour {
 
 		remainingText = transform.FindChild ("TurretGroup").transform.FindChild ("TurretCount").gameObject.GetComponent<Text> ();
 		ammoText = transform.FindChild ("AmmoImage").transform.FindChild ("AmmoText").gameObject.GetComponent<Text>();
+		timerText = transform.FindChild ("TimerText").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
@@ -51,6 +55,24 @@ public class UIMaster : MonoBehaviour {
 
 	public void updateTurretsRemaining(int remaining){
 		remainingText.text = "x" + remaining.ToString ();
+	}
+
+	public void updateTimer(float num){
+		min = Mathf.Floor (num / 60);
+		sec = Mathf.Floor (num % 60);
+		string minute;
+		string second;
+
+		if (min < 10)
+			minute = "0" + min.ToString ();
+		else
+			minute = min.ToString ();
+		if (sec < 10)
+			second = "0" + sec.ToString ();
+		else
+			second = sec.ToString ();
+
+		timerText.text = minute+":"+second;
 
 	}
 }

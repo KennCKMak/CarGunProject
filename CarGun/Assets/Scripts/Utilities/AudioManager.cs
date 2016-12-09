@@ -17,11 +17,17 @@ public class AudioManager : MonoBehaviour {
 
 	[SerializeField] private AudioClip BGM_Menu;
 	[SerializeField] private AudioClip BGM_Western;
+	[SerializeField] private AudioClip BGM_Victory;
 
 	[SerializeField] private AudioClip BGM_Boss;
 
+	[SerializeField] private AudioClip SE_CarHitMarker;
+	[SerializeField] private AudioClip SE_CarGotHit;
+	[SerializeField] private AudioClip SE_CarDestroyed;
 	[SerializeField] private AudioClip SE_BarrelFire;
+	[SerializeField] private AudioClip SE_TurretDestroyed;
 	[SerializeField] private AudioClip SE_MineExplode;
+	[SerializeField] private AudioClip SE_Explosion;
 
 	//private AudioSource source; //SE
 	private AudioSource bgm; //BGM
@@ -37,12 +43,43 @@ public class AudioManager : MonoBehaviour {
 		bgm.Play ();
 	}
 
+	public void PlayVictoryBGM(){
+		bgm.clip = BGM_Victory;
+		bgm.Play ();
+	}
+	public void stopBGM(){
+		bgm.Stop();
+	}
+
+	public void PlaySE_CarHitMarker(){
+		PlaySound (SE_CarHitMarker, 0.1f);
+	}
+	public void PlaySE_CarGotHit(){
+		PlaySound (SE_CarGotHit, 0.1f);
+	}
+
+	public void PlaySE_CarDestroyed(){
+		PlaySound (SE_CarDestroyed, 0.3f);
+	}
+
 	public void PlaySE_BarrelFire(){
 		PlaySound (SE_BarrelFire, 0.1f);
 	}
 
+	public void PlaySE_TurretDestroyed(){
+		PlaySound (SE_TurretDestroyed, 0.3f);
+	}
+
 	public void PlaySE_MineExplode(){
-		PlaySound (SE_MineExplode, 0.1f);
+		PlaySound (SE_MineExplode, 0.6f);
+	}
+
+	public void PlaySE_Explosion(float num){
+		PlaySound (SE_Explosion, num);
+	}
+
+	public void PlaySE_Explosion(){
+		PlaySound (SE_Explosion, 0.6f);
 	}
 
 

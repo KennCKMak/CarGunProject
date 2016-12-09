@@ -7,7 +7,10 @@ public class AirBombControl : MonoBehaviour {
 	public float damage;
 	public float explosionRadius;
 	public float explosiveForce;
+	public GameObject explosionPrefab;
 	public GameObject playerTarget;
+
+	private AudioManager audioManager;
 
 
 	private float height;
@@ -16,6 +19,7 @@ public class AirBombControl : MonoBehaviour {
 	private float rotSpeed;
 	// Use this for initialization
 	void Start () {
+		audioManager = GameObject.Find ("GameManager").GetComponent<AudioManager> ();
 		if (playerTarget == null)
 			playerTarget = GameObject.Find ("Car").gameObject;
 
@@ -23,7 +27,6 @@ public class AirBombControl : MonoBehaviour {
 		timeToHit = height / fallSpeed;//seconds it takes to hit
 		existTime = timeToHit + 3; //falls past screen for 5 seconds
 		rotSpeed = 90f / (timeToHit);
-
 		Destroy (gameObject, existTime);
 	}
 	
@@ -38,7 +41,8 @@ public class AirBombControl : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision col){
-
+		spawnExplosion ();
+		audioManager.PlaySE_Explosion ();
 		checkHitPlayer ();
 		Destroy (gameObject);
 
@@ -51,5 +55,10 @@ public class AirBombControl : MonoBehaviour {
 			playerTarget.GetComponent<PlayerEntity> ().takeDamage (damage);
 			playerTarget.GetComponent<Rigidbody>().AddExplosionForce(explosiveForce*500, transform.position, explosionRadius, 1f, ForceMode.Impulse);
 		}
+	}
+
+	void spawnExplosion(){
+		GameObject newExplosion = Instantiate (explosionPrefab, transform.position, Quaternion.identity) as GameObject;
+		Destroy (newExplosion, 1f);
 	}
 }

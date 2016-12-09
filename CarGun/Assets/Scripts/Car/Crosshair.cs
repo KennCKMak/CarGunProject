@@ -32,4 +32,5 @@ public class Crosshair : MonoBehaviour {
 		if(OriginalOn == true) 
 			GUI.DrawTexture(position, crosshairTexture); 
 	}
+		
 }

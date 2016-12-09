@@ -46,14 +46,17 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Car\Crosshair.cs" />
+     <Compile Include="Assets\Scripts\Car\DestroyedCarClass.cs" />
      <Compile Include="Assets\Scripts\Car\PlayerEntity.cs" />
      <Compile Include="Assets\Scripts\Car\PlayerProjectile.cs" />
      <Compile Include="Assets\Scripts\Car\PlayerTurretControl.cs" />
      <Compile Include="Assets\Scripts\Enemy\AirBombControl.cs" />
      <Compile Include="Assets\Scripts\Enemy\AircraftControl.cs" />
+     <Compile Include="Assets\Scripts\Enemy\BoulderClass.cs" />
      <Compile Include="Assets\Scripts\Enemy\DestroyedTurretClass.cs" />
      <Compile Include="Assets\Scripts\Enemy\HazardMine.cs" />
      <Compile Include="Assets\Scripts\Enemy\RocketControl.cs" />
+     <Compile Include="Assets\Scripts\Enemy\RockslideClass.cs" />
      <Compile Include="Assets\Scripts\Enemy\Rotate.cs" />
      <Compile Include="Assets\Scripts\Enemy\TurretAttack.cs" />
      <Compile Include="Assets\Scripts\Enemy\TurretClass.cs" />
@@ -65,11 +68,15 @@
      <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
      <None Include="Assets\Standard Assets\Vehicles\Aircraft\AircraftGuidelines.txt" />
      <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
+     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
      <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpec.shader" />
+     <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
      <None Include="Assets\DownloadedAssets\Free Turret\Readme.txt" />
      <None Include="Assets\Standard Assets\Vehicles\Car\CarGuidelines.txt" />
      <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
+     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>G:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

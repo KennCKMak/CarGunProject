@@ -18,7 +18,8 @@ public class TurretAttack : MonoBehaviour {
 	private Vector3 spawnDisplacement;
 	private	Quaternion rocketRotation;
 
-	public float finalHelperValue;
+	public float turnTime;
+	public float lockTime;
 
 
 	bool canFire = false;
@@ -102,7 +103,8 @@ public class TurretAttack : MonoBehaviour {
 			GameObject rocket = Instantiate (missile, spawnDisplacement, rocketRotation) as GameObject;
 			rocket.GetComponent<RocketControl> ().damage = damage;
 			rocket.GetComponent<RocketControl> ().explosionRadius = explosionRadius;
-			rocket.GetComponent<RocketControl> ().finalHelperValue = finalHelperValue;
+			rocket.GetComponent<RocketControl> ().turnTime = turnTime;
+			rocket.GetComponent<RocketControl> ().lockTime = lockTime;
 
 			if (launchNum > 3)
 				launchNum = 1;
@@ -116,21 +118,21 @@ public class TurretAttack : MonoBehaviour {
 			switch (launchNum) {
 			case(1):
 				spawnDisplacement = launch1.transform.position;
-				spawnDisplacement.x -= 1.771164f;
+				//spawnDisplacement.x -= 1.771164f;
 				rocketRotation = launch1.transform.rotation;
 				launchNum++;
 				barrageCount--;
 				break;
 			case(2):
 				spawnDisplacement = launch2.transform.position;
-				spawnDisplacement.x -= 1.771164f;
+				//spawnDisplacement.x -= 1.771164f;
 				rocketRotation = launch2.transform.rotation;
 				launchNum++;
 				barrageCount--;
 				break;
 			case(3):
 				spawnDisplacement = launch3.transform.position;
-				spawnDisplacement.x -= 1.771164f;
+				//spawnDisplacement.x -= 1.771164f;
 				rocketRotation = launch3.transform.rotation;
 				launchNum++;
 				barrageCount--;
@@ -142,7 +144,8 @@ public class TurretAttack : MonoBehaviour {
 			GameObject rocket = Instantiate (missile, spawnDisplacement, rocketRotation) as GameObject;
 			rocket.GetComponent<RocketControl> ().damage = damage;
 			rocket.GetComponent<RocketControl> ().explosionRadius = explosionRadius;
-			rocket.GetComponent<RocketControl> ().finalHelperValue = finalHelperValue;
+			rocket.GetComponent<RocketControl> ().turnTime = turnTime;
+			rocket.GetComponent<RocketControl> ().lockTime = lockTime;
 
 			if (launchNum > 3)
 				launchNum = 1;
